@@ -1,0 +1,52 @@
+version: "3.9"
+
+services:
+  influxdb:
+    container_name: influxdb
+    image: influxdb:2.4.0-alpine
+    volumes:
+      - influxdb-lib:/var/lib/influxdb2
+    env_file:
+      - ./influx2.env
+    ports:
+      - 8086:8086
+    restart: always
+    privileged: true
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana-oss:9.1.8
+    volumes:
+      - ./grafana/etc:/etc/grafana:ro
+      - grafana-lib:/var/lib/grafana
+      - grafana-log:/var/log/grafana
+    links:
+      - influxdb:influxdb
+    env_file:
+      - ./grafana.env
+    ports:
+      - 3000:3000
+    depends_on:
+      - influxdb
+    restart: always
+    privileged: true
+
+  telegraf:
+    container_name: telegraf
+    image: telegraf:1.24-alpine
+    volumes:
+      - ./telegraf/mytelegraf.conf:/etc/telegraf/telegraf.conf
+    env_file:
+      - ./telegraf/telegraf.env
+    restart: always
+    privileged: true
+
+volumes:
+  influxdb-lib:
+    external: false
+
+  grafana-lib:
+    external: false
+
+  grafana-log:
+    external: false
