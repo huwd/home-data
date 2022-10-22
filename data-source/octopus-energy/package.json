@@ -1,0 +1,34 @@
+{
+  "name": "octopus-energy-api-data",
+  "version": "0.0.1",
+  "description": "A script to scrape energy usage data out of Octopus Energy's Authenticated API and write it to InfluxDB",
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "start": "node octopus-energy-usage.js"
+  },
+  "author": "Huw Diprose",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huwd/home-data.git"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.19.3",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.26.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "prettier": "^2.7.1"
+  },
+  "dependencies": {
+    "@influxdata/influxdb-client": "^1.31.0",
+    "axios": "^1.1.3",
+    "dotenv": "^16.0.3",
+    "influx": "^5.9.3"
+  }
+}

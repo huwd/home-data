@@ -41,6 +41,18 @@ services:
     restart: always
     privileged: true
 
+  data-source-octopus-energy:
+    container_name: octopus-energy
+    image: data-source/octopus-energy
+    build:
+      context: ./data-source/octopus-energy
+    links:
+      - influxdb:influxdb
+    env_file:
+      - ./data-source/octopus-energy/.env
+    restart: always
+    privileged: true
+
 volumes:
   influxdb-lib:
     external: false

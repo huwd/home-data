@@ -9,4 +9,4 @@ influxdb/var/lib/wal
 grafana/etc/provisioning/datasources/datasource.yaml
 
 **/*.env
-
+data-source/**/node_modules/
